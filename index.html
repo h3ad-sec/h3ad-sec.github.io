@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>H3AD-SEC</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06080f;
+      --panel: #0b0f1a;
+      --text: #e6f1ff;
+      --muted: #7d8fb3;
+      --accent: #00ff9f;
+      --accent2: #3b82f6;
+      --border: #1a2238;
+    }
+
+    body.light {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #0b1220;
+      --muted: #5c6b8a;
+      --accent: #0077ff;
+      --accent2: #00a86b;
+      --border: #d9e1f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* MATRIX */
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body.dark #matrix {
+      opacity: 0.25;
+    }
+
+    body.light #matrix {
+      opacity: 0.20;
+    }
+
+    /* Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .toggle-track {
+      width: 50px;
+      height: 24px;
+      background: var(--border);
+      border-radius: 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      font-size: 12px;
+    }
+
+    .icon {
+      opacity: 0.6;
+    }
+
+    body:not(.light) .moon {
+      opacity: 1;
+    }
+
+    body.light .sun {
+      opacity: 1;
+    }
+
+    .toggle-thumb {
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: 0.3s;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    body.light .toggle-thumb {
+      transform: translateX(26px);
+    }
+
+    /* Layout */
+    .container {
+      width: 90%;
+      max-width: 850px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      font-family: 'Share Tech Mono';
+      font-size: clamp(3rem, 10vw, 6rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .logo span:nth-child(1) {
+      color: var(--accent);
+    }
+
+    .logo span:nth-child(2) {
+      color: var(--accent2);
+    }
+
+    .logo span:nth-child(3) {
+      color: var(--muted);
+    }
+
+    .sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Panel */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 25px;
+      text-align: left;
+      font-family: 'Share Tech Mono';
+    }
+
+    .line {
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .prompt {
+      color: var(--accent);
+    }
+
+    .cmd {
+      color: var(--text);
+    }
+
+    .desc {
+      color: var(--muted);
+    }
+
+    /* CENTER CONTACT BUTTON */
+    .links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .links a {
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-family: 'Share Tech Mono';
+      box-shadow: 0 0 15px rgba(0, 255, 159, 0.25);
+      transition: 0.2s;
+    }
+
+    .links a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 255, 159, 0.45);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 30px;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="matrix"></canvas>
+
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="toggle-track">
+      <span class="icon moon">🌙</span>
+      <span class="icon sun">☀️</span>
+      <div class="toggle-thumb"></div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="tag">Threat Intelligence · Detection · Adversary Research</div>
+
+    <div class="logo">
+      <span>H3AD</span><span>-</span><span>SEC</span>
+    </div>
+
+    <div class="sub">cyber threat intelligence platform</div>
+
+    <div class="panel">
+
+      <div class="line"><span class="prompt">root@h3ad-sec:~$</span> <span class="cmd">status</span></div>
+      <div class="line desc">Active — Building threat intelligence & detection research</div>
+
+      <br>
+
+      <div class="line"><span class="prompt">root@h3ad-sec:~$</span> <span class="cmd">focus</span></div>
+      <div class="line desc">APT tracking · Malware analysis · IOC enrichment · Detection engineering</div>
+
+      <br>
+
+      <div class="line"><span class="prompt">root@h3ad-sec:~$</span> <span class="cmd">roadmap</span></div>
+      <div class="line desc">Research blogs · Detection labs · Automation tools · Threat hunting playbooks</div>
+
+    </div>
+
+    <div class="links">
+      <a href="mailto:h3adsec@gmail.com">Contact</a>
+    </div>
+
+    <div class="footer">
+      H3AD-SEC © 2026 · Detection over noise
+    </div>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      document.body.classList.toggle("dark");
+
+      localStorage.setItem(
+        "theme",
+        document.body.classList.contains("light") ? "light" : "dark"
+      );
+    }
+
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+    } else {
+      document.body.classList.add("dark");
+    }
+
+    // MATRIX ENGINE
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    const chars = [
+      '192.', '168.', '0.1', '255.', 'TCP', 'UDP', 'SSH', 'TLS', 'DNS', 'HTTP', 'HTTPS',
+      'deadbeef', 'c0ffee', '0xFF', 'A3F1', 'B2D9',
+      'T1059', 'T1078', 'T1190', 'T1027', 'T1055',
+      'IOC', 'TTP', 'CVE', 'RCE', 'XSS', 'SQLi',
+      'ALERT', 'BLOCK', 'DENY', 'DROP', 'LOG',
+      '0', '1', 'A', 'B', 'C', 'D', 'E', 'F',
+      '::', '{}', '[]', '&&', '||', '!=',
+      'nmap', 'curl', 'bash', 'sudo',
+      'RAT', 'C2', 'payload', 'rootkit'
+    ];
+
+    let w, h, cols, drops;
+
+    function init() {
+      w = canvas.width = window.innerWidth * devicePixelRatio;
+      h = canvas.height = window.innerHeight * devicePixelRatio;
+
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+
+      cols = Math.floor(window.innerWidth / 18);
+      drops = Array(cols).fill(1);
+    }
+
+    function draw() {
+      const isLight = document.body.classList.contains("light");
+
+      ctx.fillStyle = isLight
+        ? "rgba(245,247,251,0.08)"
+        : "rgba(0,0,0,0.12)";
+
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+      ctx.fillStyle = isLight ? "#0077ff" : "#00ff9f";
+      ctx.font = "14px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * 18, drops[i] * 18);
+
+        if (drops[i] * 18 > window.innerHeight && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    window.addEventListener("resize", init);
+    init();
+    setInterval(draw, 45);
+  </script>
+
+</body>
+
+</html>
