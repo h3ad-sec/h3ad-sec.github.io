@@ -98,8 +98,7 @@
       display: flex;
       align-items: center;
       gap: 2px;
-      overflow-x: auto;
-      scrollbar-width: none;
+      overflow: visible;
     }
 
     .nav-links::-webkit-scrollbar {
@@ -455,6 +454,46 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* NAV DROPDOWN */
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 120px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      z-index: 100;
+    }
+    .nav-item:hover .nav-dropdown { display: block; }
+    .nav-links .nav-dropdown a {
+      display: block;
+      padding: 7px 12px;
+      font-family: 'Share Tech Mono';
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: none;
+      border-left: 2px solid transparent;
+      border-radius: 0;
+      transition: 0.15s;
+    }
+    .nav-links .nav-dropdown a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(0, 255, 159, 0.04);
+    }
+    body.light .nav-links .nav-dropdown a:hover {
+      background: rgba(0, 119, 255, 0.05);
+    }
+    .drawer-sub {
+      padding-left: 1.8rem !important;
+      font-size: 0.7rem !important;
+      opacity: 0.8;
+    }
   </style>
 </head>
 
@@ -474,8 +513,13 @@
     <!-- desktop links -->
     <div class="nav-links">
       <div class="nav-divider"></div>
-      <a class="whoami" href="https://YOUR-USERNAME.github.io/h3ad/" target="_blank" rel="noopener">H3AD</a>
-      <a href="https://YOUR-USERNAME.github.io/h3ad-x/" target="_blank" rel="noopener">H3AD-X</a>
+      <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">H3AD</a>
+      <div class="nav-item">
+        <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener">H3AD-X</a>
+        <div class="nav-dropdown">
+          <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener">VERDIKT</a>
+        </div>
+      </div>
       <a href="https://YOUR-USERNAME.github.io/h3ad-ai/" target="_blank" rel="noopener">H3AD-AI</a>
       <a href="https://YOUR-USERNAME.github.io/h3ad-detect/" target="_blank" rel="noopener">H3AD-DETECT</a>
       <a href="https://YOUR-USERNAME.github.io/h3ad-hunt/" target="_blank" rel="noopener">H3AD-HUNT</a>
@@ -494,10 +538,10 @@
 
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" id="navDrawer">
-    <a class="whoami" href="https://YOUR-USERNAME.github.io/h3ad/" target="_blank" rel="noopener"
+    <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener"
       onclick="closeDrawer()">H3AD &nbsp;↗</a>
-    <a href="https://YOUR-USERNAME.github.io/h3ad-x/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X
-      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ VERDIKT &nbsp;↗</a>
     <a href="https://YOUR-USERNAME.github.io/h3ad-ai/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-AI
       &nbsp;↗</a>
     <a href="https://YOUR-USERNAME.github.io/h3ad-detect/" target="_blank" rel="noopener"
@@ -585,7 +629,7 @@
           <span class="module-card-arrow">↗</span>
         </a>
 
-        <a class="module-card" href="https://YOUR-USERNAME.github.io/h3ad/" target="_blank" rel="noopener">
+        <a class="module-card" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">
           <div class="module-card-name">H3AD</div>
           <div class="module-card-desc">whoami</div>
           <span class="module-card-arrow">↗</span>
