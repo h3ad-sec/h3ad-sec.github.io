@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H3AD-SEC — Operational Cyber Defense Platform</title>
-  <meta name="description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
-  <link rel="icon" href="https://h3ad-sec.github.io/logo-dark.png" type="image/png">
+  <title>H3AD-SEC - Operational Cyber Defense Platform</title>
+  <meta name="description"
+    content="H3AD-SEC - Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
+  <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
   <style>
@@ -458,7 +459,12 @@
     }
 
     /* NAV DROPDOWN */
-    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
     .nav-dropdown {
       display: none;
       position: absolute;
@@ -468,13 +474,18 @@
       padding-top: 6px;
       z-index: 100;
     }
+
     .nav-dropdown-inner {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
     }
-    .nav-item:hover .nav-dropdown { display: block; }
+
+    .nav-item:hover .nav-dropdown {
+      display: block;
+    }
+
     .nav-links .nav-dropdown a {
       display: block;
       padding: 7px 12px;
@@ -486,14 +497,17 @@
       border-radius: 0;
       transition: 0.15s;
     }
+
     .nav-links .nav-dropdown a:hover {
       color: var(--accent);
       border-left-color: var(--accent);
       background: rgba(0, 255, 159, 0.04);
     }
+
     body.light .nav-links .nav-dropdown a:hover {
       background: rgba(0, 119, 255, 0.05);
     }
+
     .drawer-sub {
       padding-left: 1.8rem !important;
       font-size: 0.7rem !important;
@@ -545,10 +559,12 @@
 
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" id="navDrawer">
-    <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener"
-      onclick="closeDrawer()">H3AD &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ VERDIKT &nbsp;↗</a>
+    <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()"
+      class="drawer-sub">↳ VERDIKT &nbsp;↗</a>
     <a href="https://YOUR-USERNAME.github.io/h3ad-ai/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-AI
       &nbsp;↗</a>
     <a href="https://YOUR-USERNAME.github.io/h3ad-detect/" target="_blank" rel="noopener"
