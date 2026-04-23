@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H3AD-SEC</title>
+  <title>H3AD-SEC — Operational Cyber Defense Platform</title>
+  <meta name="description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
+  <link rel="icon" href="https://h3ad-sec.github.io/logo-dark.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
   <style>
@@ -460,14 +462,17 @@
     .nav-dropdown {
       display: none;
       position: absolute;
-      top: calc(100% + 6px);
+      top: 100%;
       left: 0;
       min-width: 120px;
+      padding-top: 6px;
+      z-index: 100;
+    }
+    .nav-dropdown-inner {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
-      z-index: 100;
     }
     .nav-item:hover .nav-dropdown { display: block; }
     .nav-links .nav-dropdown a {
@@ -517,7 +522,9 @@
       <div class="nav-item">
         <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener">H3AD-X</a>
         <div class="nav-dropdown">
-          <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener">VERDIKT</a>
+          <div class="nav-dropdown-inner">
+            <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener">VERDIKT</a>
+          </div>
         </div>
       </div>
       <a href="https://YOUR-USERNAME.github.io/h3ad-ai/" target="_blank" rel="noopener">H3AD-AI</a>
