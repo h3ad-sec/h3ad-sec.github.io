@@ -20,6 +20,18 @@ IOC enrichment, artifact extraction, and infrastructure mapping.
 | [PARSE-X](https://h3ad-sec.github.io/PARSE-X/) | Artifact extractor from raw text — 18 types, client-side |
 | [DNSCOPE](https://h3ad-sec.github.io/DNSCOPE/) | Domain/IP infrastructure mapper — ASN, PDNS, certs, CDN/WAF |
 
+### [H3AD-AI](https://h3ad-sec.github.io/H3AD-AI/) — AI-Assisted Security
+
+AI-augmented analyst workflows for runbook generation, query building, and ATT&CK mapping.
+
+| Tool | Description |
+|------|-------------|
+| [INSIGHT-AI](https://h3ad-sec.github.io/INSIGHT-AI/) | AI runbook generator — L3/SME persona, 10-section incident playbooks |
+| [QUERYCRAFT-AI](https://h3ad-sec.github.io/QUERYCRAFT-AI/) | AI query builder — KQL, Sigma, XQL from natural language |
+| [FPLENS-AI](https://h3ad-sec.github.io/FPLENS-AI/) | False positive analyzer — likelihood scoring with analyst justification |
+| [ATTMAP-AI](https://h3ad-sec.github.io/ATTMAP-AI/) | ATT&CK mapper — technique identification from alert/log context |
+| [CHRONO-AI](https://h3ad-sec.github.io/CHRONO-AI/) | Timeline builder — structured event chronology from raw investigation notes |
+
 ### [H3AD-DETECT](https://h3ad-sec.github.io/H3AD-DETECT/) — Detection Engineering
 Detection query libraries mapped to MITRE ATT&CK.
 
