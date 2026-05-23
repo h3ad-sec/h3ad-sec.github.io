@@ -15,7 +15,7 @@
       --panel-2:        #111827;
       --border:         #1c2333;
       --text:           #e6edf3;
-      --muted:          #6b7280;
+      --muted:          #8b96a8;
       --subtle:         #2d3748;
       --primary:        #00d4ff;
       --primary-dim:    rgba(0, 212, 255, 0.08);
@@ -52,7 +52,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Exo 2', sans-serif;
-      min-height: 100vh;
+      min-height: 100dvh;
       transition: background 0.3s, color 0.3s;
       overflow-x: hidden;
     }
@@ -113,10 +113,10 @@
     .nav-links a {
       font-family: 'Exo 2', sans-serif;
       font-weight: 500;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--muted);
       text-decoration: none;
-      padding: 5px 9px;
+      padding: 8px 10px;
       border-radius: 5px;
       border: 1px solid transparent;
       white-space: nowrap;
@@ -144,12 +144,13 @@
     .nav-item { position: relative; display: flex; align-items: center; }
 
     .nav-dropdown {
-      display: none;
       position: absolute;
       top: 100%; left: 0;
       min-width: 140px;
       padding-top: 6px;
       z-index: 100;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     .nav-dropdown-inner {
@@ -158,16 +159,29 @@
       border-radius: 7px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
     }
 
-    .nav-item:hover .nav-dropdown { display: block; }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .nav-item:hover .nav-dropdown-inner,
+    .nav-item:focus-within .nav-dropdown-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .nav-links .nav-dropdown a {
       display: block;
       padding: 7px 13px;
       font-family: 'Exo 2', sans-serif;
       font-weight: 400;
-      font-size: 0.67rem;
+      font-size: 0.72rem;
       color: var(--muted);
       border: none;
       border-left: 2px solid transparent;
@@ -219,6 +233,8 @@
       padding: 6px;
       margin-right: 8px;
       flex-shrink: 0;
+      min-height: 44px;
+      min-width: 44px;
     }
 
     .hamburger span {
@@ -296,7 +312,7 @@
 
     .hero-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       color: var(--primary);
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -380,7 +396,7 @@
 
     .stat-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.5rem;
+      font-size: 0.58rem;
       color: var(--muted);
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -396,7 +412,7 @@
 
     .section-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
+      font-size: 0.62rem;
       color: var(--muted);
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -447,8 +463,8 @@
     .module-card:hover { background: var(--panel-2); }
     .module-card:hover::before { opacity: 1; }
 
-    /* SOON cards — dimmed */
-    .module-card.soon { opacity: 0.4; }
+    /* SOON cards — dimmed, non-interactive */
+    .module-card.soon { opacity: 0.4; pointer-events: none; cursor: default; }
     .module-card.soon:hover { background: var(--panel); }
     .module-card.soon:hover::before { opacity: 0; }
 
@@ -492,7 +508,7 @@
     .module-card-desc {
       font-family: 'Exo 2', sans-serif;
       font-weight: 400;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: var(--muted);
       line-height: 1.65;
       margin-bottom: 0.9rem;
@@ -501,7 +517,7 @@
 
     .module-card-tools {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.49rem;
+      font-size: 0.58rem;
       color: var(--subtle);
       letter-spacing: 0.06em;
       margin-bottom: 0.85rem;
@@ -522,7 +538,7 @@
       align-items: center;
       gap: 0.35rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.5rem;
+      font-size: 0.58rem;
       letter-spacing: 0.08em;
     }
 
@@ -543,7 +559,7 @@
 
     .tool-count {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.48rem;
+      font-size: 0.56rem;
       color: var(--muted);
       letter-spacing: 0.06em;
       background: var(--bg);
@@ -581,7 +597,7 @@
 
     .footer-copy {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.52rem;
+      font-size: 0.6rem;
       color: var(--subtle);
       letter-spacing: 0.1em;
     }
@@ -641,6 +657,42 @@
         word-break: break-word;
       }
     }
+    /* ── NAV CARET ── */
+    .nav-caret {
+      font-size: 0.6em;
+      opacity: 0.55;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 1px;
+      transition: transform 0.15s ease;
+    }
+    .nav-item:hover .nav-caret,
+    .nav-item:focus-within .nav-caret { transform: rotate(180deg); }
+
+    /* ── DRAWER DIVIDER ── */
+    .drawer-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0.3rem 0;
+      flex-shrink: 0;
+    }
+
+    /* ── FOCUS RINGS ── */
+    a:focus-visible,
+    [tabindex]:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -661,7 +713,7 @@
       <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">H3AD</a>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">H3AD-X</a>
+        <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-X <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" rel="noopener">X-VERDIKT</a>
           <a href="https://h3ad-sec.github.io/PARSE-X/" target="_blank" rel="noopener">PARSE-X</a>
@@ -670,7 +722,7 @@
       </div>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">H3AD-AI</a>
+        <a href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-AI <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">INSIGHT-AI</a>
           <a href="https://h3ad-sec.github.io/QUERYCRAFT-AI/" target="_blank" rel="noopener">QUERYCRAFT-AI</a>
@@ -685,14 +737,14 @@
       </div>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">H3AD-DETECT</a>
+        <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-DETECT <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/TRACERULES/" target="_blank" rel="noopener">TRACERULES</a>
         </div></div>
       </div>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">H3AD-HUNT</a>
+        <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-HUNT <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" rel="noopener">HYPOS</a>
           <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" rel="noopener">PIVEX</a>
@@ -701,7 +753,7 @@
       </div>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">H3AD-OPS</a>
+        <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-OPS <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener">QUICKTRACE</a>
           <a href="https://h3ad-sec.github.io/SHIFTLOG/" target="_blank" rel="noopener">SHIFTLOG</a>
@@ -709,7 +761,7 @@
       </div>
 
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">H3AD-DF</a>
+        <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-DF <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/REGSCOPE/" target="_blank" rel="noopener">REGSCOPE</a>
           <a href="https://h3ad-sec.github.io/EVTXPARSE/" target="_blank" rel="noopener">EVTXPARSE</a>
@@ -717,7 +769,7 @@
         </div></div>
       </div>
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">H3AD-IR</a>
+        <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-IR <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/CASEBOARD/" target="_blank" rel="noopener">CASEBOARD</a>
         </div></div>
@@ -725,7 +777,7 @@
       <a href="mailto:h3adsec@gmail.com">CONTACT</a>
     </div>
 
-    <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle" onclick="toggleTheme()" role="switch" aria-checked="false" aria-label="Toggle light mode" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTheme();}">
       <div class="toggle-track"><div class="toggle-thumb"></div></div>
     </div>
   </nav>
@@ -733,10 +785,12 @@
   <!-- MOBILE DRAWER -->
   <div class="nav-drawer" id="navDrawer">
     <a class="whoami" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X ↗</a>
     <a href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ X-VERDIKT ↗</a>
     <a href="https://h3ad-sec.github.io/PARSE-X/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PARSE-X ↗</a>
     <a href="https://h3ad-sec.github.io/DNSCOPE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ DNSCOPE ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-AI ↗</a>
     <a href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ INSIGHT-AI ↗</a>
     <a href="https://h3ad-sec.github.io/QUERYCRAFT-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ QUERYCRAFT-AI ↗</a>
@@ -747,21 +801,27 @@
     <a href="https://h3ad-sec.github.io/PERSONA-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PERSONA-AI ↗</a>
     <a href="https://h3ad-sec.github.io/DEBRIEF-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ DEBRIEF-AI ↗</a>
     <a href="https://h3ad-sec.github.io/MALBRIEF-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ MALBRIEF-AI ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DETECT ↗</a>
     <a href="https://h3ad-sec.github.io/TRACERULES/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ TRACERULES ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-HUNT ↗</a>
     <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ HYPOS ↗</a>
     <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PIVEX ↗</a>
     <a href="https://h3ad-sec.github.io/TRACEPULSE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ TRACEPULSE ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-OPS ↗</a>
     <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ QUICKTRACE ↗</a>
     <a href="https://h3ad-sec.github.io/SHIFTLOG/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ SHIFTLOG ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DF ↗</a>
     <a href="https://h3ad-sec.github.io/REGSCOPE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ REGSCOPE ↗</a>
     <a href="https://h3ad-sec.github.io/EVTXPARSE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ EVTXPARSE ↗</a>
     <a href="https://h3ad-sec.github.io/ARTIFACTDB/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ ARTIFACTDB ↗</a>
+    <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-IR ↗</a>
     <a href="https://h3ad-sec.github.io/CASEBOARD/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ CASEBOARD ↗</a>
+    <div class="drawer-divider"></div>
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
 
@@ -892,7 +952,7 @@
           </div>
         </a>
 
-        <a class="module-card soon" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">
+        <a class="module-card soon" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-DF</span>
             <span class="module-card-arrow">↗</span>
@@ -907,7 +967,7 @@
           </div>
         </a>
 
-        <a class="module-card soon" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">
+        <a class="module-card soon" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-IR</span>
             <span class="module-card-arrow">↗</span>
@@ -979,12 +1039,16 @@
       const t = isLight ? 'dark' : 'light';
       localStorage.setItem('h3ad-theme', t);
       setLogo(t);
+      const toggle = document.querySelector('.theme-toggle');
+      if (toggle) toggle.setAttribute('aria-checked', String(!isLight));
     }
 
     const saved = localStorage.getItem('h3ad-theme');
     if (saved === 'light') {
       document.body.classList.add('light');
       setLogo('light');
+      const toggle = document.querySelector('.theme-toggle');
+      if (toggle) toggle.setAttribute('aria-checked', 'true');
     } else {
       document.body.classList.add('dark');
       setLogo('dark');
