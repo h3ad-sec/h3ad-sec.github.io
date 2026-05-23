@@ -977,11 +977,11 @@
       document.body.classList.toggle('light', !isLight);
       document.body.classList.toggle('dark', isLight);
       const t = isLight ? 'dark' : 'light';
-      localStorage.setItem('theme', t);
+      localStorage.setItem('h3ad-theme', t);
       setLogo(t);
     }
 
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem('h3ad-theme');
     if (saved === 'light') {
       document.body.classList.add('light');
       setLogo('light');
