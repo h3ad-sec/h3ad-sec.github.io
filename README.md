@@ -16,12 +16,11 @@ IOC enrichment, artifact extraction, and infrastructure mapping.
 | Tool | Description |
 |------|-------------|
 | [VERDIKT](https://h3ad-sec.github.io/VERDIKT/) | Bulk IOC checker — 6 TI sources, BYOK + managed mode |
-| [X-VERDIKT](https://h3ad-sec.github.io/X-VERDIKT/) | Deep IOC enrichment — 11+ sources, IP Intel mode |
+| [X-VERDIKT](https://h3ad-sec.github.io/X-VERDIKT/) | Deep IP enrichment — 10+ sources, IP Intel mode |
 | [PARSE-X](https://h3ad-sec.github.io/PARSE-X/) | Artifact extractor from raw text — 18 types, client-side |
 | [DNSCOPE](https://h3ad-sec.github.io/DNSCOPE/) | Domain/IP infrastructure mapper — ASN, PDNS, certs, CDN/WAF |
 
 ### [H3AD-AI](https://h3ad-sec.github.io/H3AD-AI/) — AI-Assisted Security
-
 AI-augmented analyst workflows for runbook generation, query building, and ATT&CK mapping.
 
 | Tool | Description |
@@ -31,6 +30,7 @@ AI-augmented analyst workflows for runbook generation, query building, and ATT&C
 | [FPLENS-AI](https://h3ad-sec.github.io/FPLENS-AI/) | False positive analyzer — likelihood scoring with analyst justification |
 | [ATTMAP-AI](https://h3ad-sec.github.io/ATTMAP-AI/) | ATT&CK mapper — technique identification from alert/log context |
 | [CHRONO-AI](https://h3ad-sec.github.io/CHRONO-AI/) | Timeline builder — structured event chronology from raw investigation notes |
+| [MALBRIEF-AI](https://h3ad-sec.github.io/MALBRIEF-AI/) | Malware behavior analyzer — classification, TTPs, detection signatures |
 
 ### [H3AD-DETECT](https://h3ad-sec.github.io/H3AD-DETECT/) — Detection Engineering
 Detection query libraries mapped to MITRE ATT&CK.
@@ -45,7 +45,7 @@ Hypothesis generation and investigation pivot tooling.
 | Tool | Description |
 |------|-------------|
 | [HYPOS](https://h3ad-sec.github.io/HYPOS/) | ATT&CK-based hypothesis platform with curated hunting packs |
-| [PIVEX](https://h3ad-sec.github.io/PIVEX/) | Interactive pivot graph — 36 artifact types, 168+ relationships |
+| [PIVEX](https://h3ad-sec.github.io/PIVEX/) | Interactive pivot graph — 36 artifact types, 168+ pivot relationships |
 | [TRACEPULSE](https://h3ad-sec.github.io/TRACEPULSE/) | Threat-specific query packs tied to campaigns and CVEs |
 
 ### [H3AD-OPS](https://h3ad-sec.github.io/H3AD-OPS/) — SOC Operations
@@ -54,6 +54,18 @@ Day-to-day analyst workflow tooling.
 | Tool | Description |
 |------|-------------|
 | [QUICKTRACE](https://h3ad-sec.github.io/QUICKTRACE/) | Daily workflow queries — AUTH, NETWORK, ENDPOINT, CLOUD |
+| [SHIFTLOG](https://h3ad-sec.github.io/SHIFTLOG/) | Shift handover report generator — structured 6-section form |
+| [PHISHOPS](https://h3ad-sec.github.io/PHISHOPS/) | Phishing investigation tracker — 7-step workflow, live IOC aggregator |
+
+### [H3AD-DF](https://h3ad-sec.github.io/H3AD-DF/) — Digital Forensics
+Artifact analysis and forensic triage tooling.
+
+| Tool | Description |
+|------|-------------|
+| [REGSCOPE](https://h3ad-sec.github.io/REGSCOPE/) | Registry artifact analyzer — persistence detection, ATT&CK mapping |
+
+### [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) — Incident Response
+Incident response workflow tooling. Tools coming soon.
 
 ---
 
@@ -63,6 +75,8 @@ Day-to-day analyst workflow tooling.
 - No data retention — enrichment tools either run client-side or proxy through serverless functions without logging
 - MITRE ATT&CK aligned — detection and hunting tools map to tactics and techniques
 - Dark / light theme across all tools
+- Fully responsive — all tools work across mobile, tablet, and desktop (320px to 2560px)
+- Accessible — keyboard navigation, ARIA labels, focus-visible rings, colorblind-safe status system (cyan/amber/gray)
 
 ---
 
