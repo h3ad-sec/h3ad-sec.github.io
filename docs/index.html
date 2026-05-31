@@ -805,8 +805,8 @@
         <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-OPS <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener">QUICKTRACE</a>
-          <a href="https://h3ad-sec.github.io/PHISHOPS/" target="_blank" rel="noopener">PHISHOPS</a>
           <a href="https://h3ad-sec.github.io/SHIFTLOG/" target="_blank" rel="noopener">SHIFTLOG</a>
+          <a href="https://h3ad-sec.github.io/PHISHOPS/" target="_blank" rel="noopener">PHISHOPS</a>
         </div></div>
       </div>
 
@@ -864,8 +864,8 @@
     <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-OPS ↗</a>
     <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ QUICKTRACE ↗</a>
-    <a href="https://h3ad-sec.github.io/PHISHOPS/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PHISHOPS ↗</a>
     <a href="https://h3ad-sec.github.io/SHIFTLOG/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ SHIFTLOG ↗</a>
+    <a href="https://h3ad-sec.github.io/PHISHOPS/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PHISHOPS ↗</a>
     <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DF ↗</a>
     <a href="https://h3ad-sec.github.io/REGSCOPE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ REGSCOPE ↗</a>
@@ -1128,7 +1128,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Enrich a suspicious IP with full context</td><td class="tool-cell"><a href="#x-verdikt" style="color:var(--primary);text-decoration:none;">X-VERDIKT</a></td><td>Single IP address</td></tr>
+              <tr><td>Enrich a suspicious IP, domain, URL, or hash</td><td class="tool-cell"><a href="#x-verdikt" style="color:var(--primary);text-decoration:none;">X-VERDIKT</a></td><td>IP, domain, URL, or hash</td></tr>
               <tr><td>Extract all IOCs from a paste/log/email</td><td class="tool-cell"><a href="#parse-x" style="color:var(--primary);text-decoration:none;">PARSE-X</a></td><td>Raw text</td></tr>
               <tr><td>Map a domain's infrastructure</td><td class="tool-cell"><a href="#dnscope" style="color:var(--primary);text-decoration:none;">DNSCOPE</a></td><td>Domain or IP</td></tr>
               <tr><td>Analyze email headers for spoofing</td><td class="tool-cell"><a href="#mailscope" style="color:var(--primary);text-decoration:none;">MAILSCOPE</a></td><td>Raw email headers</td></tr>
@@ -1160,7 +1160,7 @@
         <div class="section-tag">Threat Intelligence</div>
         <div class="section-divider"></div>
         <div class="module-heading">
-          <div class="module-heading-desc">Threat exchange and IOC enrichment. Four tools covering IP enrichment, artifact extraction, domain infrastructure mapping, and email header analysis. All are client-side except DNSCOPE, which uses a managed backend for live DNS queries.</div>
+          <div class="module-heading-desc">Threat exchange and IOC enrichment. Four tools covering multi-type IOC enrichment (IP, domain, URL, hash), artifact extraction, domain infrastructure mapping, and email header analysis. All are client-side except DNSCOPE, which uses a managed backend for live DNS queries.</div>
         </div>
 
         <div class="tool-entry" id="x-verdikt">
@@ -1168,20 +1168,20 @@
             <span class="tool-entry-name">X-VERDIKT <span class="status-badge status-live"><span class="status-dot"></span><span class="status-text">LIVE</span></span></span>
             <a class="tool-entry-link" href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" rel="noopener">Open ↗</a>
           </div>
-          <p class="tool-entry-tagline">Deep enrichment for a single IP address across 10 threat intelligence sources, producing a 0-100 verdict score with supplementary flags.</p>
+          <p class="tool-entry-tagline">Multi-type IOC enrichment across 11 threat intelligence sources. Accepts IP, domain, URL, and hash — each scored against sources matched to the IOC type.</p>
           <div class="tool-meta">
             <span class="meta-label">Input</span>
-            <span class="meta-value">One IP address per lookup.</span>
+            <span class="meta-value">IP address, domain, URL, or file hash (MD5/SHA1/SHA256). Defanged IOCs supported. Bulk input accepted — one per line or comma-separated.</span>
             <span class="meta-label">Output</span>
-            <span class="meta-value">Verdict score (VT 40pt + AbuseIPDB 40pt + OTX 20pt), category flags (known C2, scanner, Tor exit, proxy), raw data per source.</span>
+            <span class="meta-value">Per-type verdict score (0–100). IP: VT(30) + AbuseIPDB(40) + OTX(10) + ThreatFox(20). Domain: VT(50) + URLScan(20) + OTX(10) + ThreatFox(20). URL: VT(50) + URLScan(20) + OTX(10) + URLhaus(20). Hash: VT(25) + MalwareBazaar(10) + OTX(10) + ThreatFox(10) + HybridAnalysis(20) + FileScan(25). Raw data per source.</span>
             <span class="meta-label">Sources</span>
-            <span class="meta-value">VirusTotal, AbuseIPDB, OTX, Shodan, GreyNoise, IPInfo, IPData, CIRCL, ThreatFox, Pulsedive.</span>
+            <span class="meta-value">VirusTotal, AbuseIPDB, OTX, ThreatFox, URLScan, URLhaus, MalwareBazaar, HybridAnalysis, FileScan.io, Shodan, IPLocate — 11 total; active sources vary by IOC type.</span>
           </div>
           <div class="tool-steps-header">How to use</div>
           <div class="tool-steps">
-            <div class="tool-step"><span class="step-num">1</span><span class="step-text">Paste the IP address into the input field. Click Enrich or press Enter.</span></div>
-            <div class="tool-step"><span class="step-num">2</span><span class="step-text">The verdict score loads at the top. Scores above 70 are high-risk; 40-70 are moderate.</span></div>
-            <div class="tool-step"><span class="step-num">3</span><span class="step-text">Expand each source panel to see raw API data. Supplementary flags (C2, Tor, scanner) appear as chips under the score.</span></div>
+            <div class="tool-step"><span class="step-num">1</span><span class="step-text">Paste one or more IOCs — IP, domain, URL, or hash — one per line or comma-separated. Defanged formats (e.g., 1[.]2[.]3[.]4) are accepted.</span></div>
+            <div class="tool-step"><span class="step-num">2</span><span class="step-text">Each IOC returns a verdict score (0–100). Scores above 70 are high-risk; 40–70 are moderate. Active sources shown depend on the IOC type.</span></div>
+            <div class="tool-step"><span class="step-num">3</span><span class="step-text">Expand each source panel for raw API data. For IP lookups, supplementary flags (Tor, VPN, proxy, hosting) appear from IPLocate.</span></div>
             <div class="tool-step"><span class="step-num">4</span><span class="step-text">Copy the verdict summary for your ticket or PHISHOPS tracker.</span></div>
           </div>
         </div>
@@ -1484,7 +1484,7 @@
             <span class="meta-label">Input</span>
             <span class="meta-value">Node definitions (IOC type + value) and edge definitions (relationship type between nodes).</span>
             <span class="meta-label">Output</span>
-            <span class="meta-value">Interactive force-directed graph with dark-ring nodes, colored typed edges, and highlight/dim on selection. Supports up to 30 nodes and 83 edges.</span>
+            <span class="meta-value">Interactive force-directed graph with dark-ring nodes, colored typed edges, and highlight/dim on selection. Supports up to 36 nodes and 168+ edges.</span>
           </div>
           <div class="tool-steps-header">How to use</div>
           <div class="tool-steps">
