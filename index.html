@@ -774,6 +774,14 @@
       </div>
 
       <div class="nav-item">
+        <a href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-LEARN <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/" target="_blank" rel="noopener">THREAT HUNTING</a>
+          <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/" target="_blank" rel="noopener">LOLBAS</a>
+        </div></div>
+      </div>
+
+      <div class="nav-item">
         <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" aria-haspopup="true">H3AD-OPS <span class="nav-caret">▾</span></a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener">QUICKTRACE</a>
@@ -832,6 +840,10 @@
     <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ HYPOS ↗</a>
     <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PIVEX ↗</a>
     <a href="https://h3ad-sec.github.io/TRACEPULSE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ TRACEPULSE ↗</a>
+    <div class="drawer-divider"></div>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-LEARN ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ THREAT HUNTING ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ LOLBAS ↗</a>
     <div class="drawer-divider"></div>
     <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-OPS ↗</a>
     <a href="https://h3ad-sec.github.io/QUICKTRACE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ QUICKTRACE ↗</a>
@@ -960,6 +972,22 @@
           </div>
         </a>
 
+        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">
+          <div class="module-card-header">
+            <span class="module-card-name">H3AD-LEARN</span>
+            <span class="module-card-arrow">↗</span>
+          </div>
+          <div class="module-card-desc">Security training platform. Field-sourced learning across Threat Hunting, LOLBAS, Threat Intel, SOC Ops, Malware Analysis, and Cloud Security.</div>
+          <div class="module-card-tools">THREAT HUNTING · LOLBAS · +4 PLANNED</div>
+          <div class="module-card-footer">
+            <span class="status-badge status-partial">
+              <span class="status-dot"></span>
+              <span class="status-text">PARTIAL</span>
+            </span>
+            <span class="tool-count">1 LIVE</span>
+          </div>
+        </a>
+
         <a class="module-card" href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-OPS</span>
@@ -1081,6 +1109,22 @@
     }
     (function(){var pill=document.getElementById('xv-nav-pill'),links=document.querySelector('.nav-links'),toggle=document.querySelector('.theme-toggle'),G=20;function check(){if(!links)return;document.body.classList.remove('nav-compact');links.style.visibility='hidden';var lr=links.getBoundingClientRect(),pr=pill?pill.getBoundingClientRect().right:60,tl=toggle?toggle.getBoundingClientRect().left:window.innerWidth-60;links.style.visibility='';document.body.classList.toggle('nav-compact',(pr+G>lr.left)||(lr.right+G>tl));}check();window.addEventListener('resize',check);})();
   </script>
+
+  <!-- h3gc: visitor counter badge -->
+  <div id="h3gc" style="position:fixed;bottom:16px;right:16px;display:flex;align-items:center;gap:6px;background:rgba(8,10,18,.9);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:5px 10px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.45);z-index:9500;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:none;">
+    <svg width="7" height="7" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3.5" stroke="rgba(74,222,128,.7)" stroke-width="1"/><circle cx="4" cy="4" r="1.5" fill="rgba(74,222,128,.8)"/></svg>
+    <span id="h3gc-n" style="color:rgba(74,222,128,.9);font-weight:600">—</span>
+    <span style="opacity:.5">VIEWS</span>
+  </div>
+  <script>
+    (function(){
+      fetch('https://h3ad-sec.goatcounter.com/counter/'+encodeURIComponent(location.pathname)+'.json')
+        .then(function(r){return r.json()})
+        .then(function(d){var e=document.getElementById('h3gc-n');if(e&&d.count)e.textContent=d.count;})
+        .catch(function(){var b=document.getElementById('h3gc');if(b)b.style.display='none';});
+    })();
+  </script>
+  <script data-goatcounter="https://h3ad-sec.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
