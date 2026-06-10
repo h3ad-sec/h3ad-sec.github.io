@@ -67,6 +67,14 @@ Artifact analysis and forensic triage tooling.
 ### [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) — Incident Response
 Incident response workflow tooling. Tools coming soon.
 
+### [H3AD-LEARN](https://h3ad-sec.github.io/H3AD-LEARN/) — Security Training
+Modular browser-native security training for SOC analysts and detection engineers.
+
+| Module | Status | Chapters |
+|--------|--------|----------|
+| Threat Hunting | Live | 9 chapters — PEAK, TaHiTI, Admiralty, KQL/Sigma, advanced techniques |
+| LOLBAS | Live | 8 chapters — certutil, mshta, regsvr32, tradecraft, detection queries, APT campaigns |
+
 ---
 
 ## Design Principles
