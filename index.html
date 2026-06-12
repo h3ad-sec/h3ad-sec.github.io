@@ -1114,20 +1114,17 @@
     (function(){var pill=document.getElementById('xv-nav-pill'),links=document.querySelector('.nav-links'),toggle=document.querySelector('.theme-toggle'),G=20;function check(){if(!links)return;document.body.classList.remove('nav-compact');links.style.visibility='hidden';var lr=links.getBoundingClientRect(),pr=pill?pill.getBoundingClientRect().right:60,tl=toggle?toggle.getBoundingClientRect().left:window.innerWidth-60;links.style.visibility='';document.body.classList.toggle('nav-compact',(pr+G>lr.left)||(lr.right+G>tl));}check();window.addEventListener('resize',check);})();
   </script>
 
-  <!-- h3gc-v2 (rendered in stat-strip) -->
+  <!-- h3gc-v3 -->
   <script>
     (function(){
-      var key = (location.pathname.replace(/\//g,'') || 'hub').toLowerCase();
-      var base = 'https://api.counterapi.dev/v1/h3ad-sec/' + key;
-      var lk = 'h3gc_c_' + key;
-      var sk = 'h3gc_s_' + key;
+      var base = 'https://api.counterapi.dev/v1/h3ad-sec/total';
+      var lk = 'h3gc_c_total';
+      var sk = 'h3gc_s_total';
       var el = document.getElementById('h3gc-n');
       function store(k,v){try{localStorage.setItem(k,v);}catch(e){}}
       function session(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
       function sessionSet(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
-      // Show cached count immediately — no flash on repeat visits
       try{ var cached=localStorage.getItem(lk); if(el&&cached) el.textContent=Number(cached).toLocaleString(); }catch(e){}
-      // Increment once per session; trailing slash on read avoids 301 redirect
       var seen = session(sk);
       if (!seen) sessionSet(sk,'1');
       fetch(seen ? base + '/' : base + '/up')
@@ -1138,6 +1135,5 @@
         .catch(function(){});
     })();
   </script>
-
 </body>
 </html>
