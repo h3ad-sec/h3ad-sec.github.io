@@ -1123,19 +1123,18 @@
       var lk = 'h3gc_c_' + key;
       var sk = 'h3gc_s_' + key;
       var el = document.getElementById('h3gc-n');
-      // Show cached count immediately — no — flash on repeat visits
-      var cached = localStorage.getItem(lk);
-      if (el && cached) el.textContent = parseInt(cached, 10).toLocaleString();
-      // Increment once per session, read-only after that (trailing slash avoids 301)
-      var seen = sessionStorage.getItem(sk);
-      if (!seen) sessionStorage.setItem(sk, '1');
+      function store(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+      function session(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+      function sessionSet(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+      // Show cached count immediately — no flash on repeat visits
+      try{ var cached=localStorage.getItem(lk); if(el&&cached) el.textContent=Number(cached).toLocaleString(); }catch(e){}
+      // Increment once per session; trailing slash on read avoids 301 redirect
+      var seen = session(sk);
+      if (!seen) sessionSet(sk,'1');
       fetch(seen ? base + '/' : base + '/up')
         .then(function(r){ if(!r.ok) throw r; return r.json(); })
         .then(function(d){
-          if (d.count != null) {
-            localStorage.setItem(lk, d.count);
-            if (el) el.textContent = d.count.toLocaleString();
-          }
+          if(d.count!=null){ store(lk,d.count); if(el) el.textContent=Number(d.count).toLocaleString(); }
         })
         .catch(function(){});
     })();
