@@ -19,6 +19,7 @@ IOC enrichment, artifact extraction, and infrastructure mapping.
 | [X-VERDIKT](https://h3ad-sec.github.io/X-VERDIKT/) | Deep IP enrichment — 10+ sources, IP Intel mode |
 | [PARSE-X](https://h3ad-sec.github.io/PARSE-X/) | Artifact extractor from raw text — 18 types, client-side |
 | [DNSCOPE](https://h3ad-sec.github.io/DNSCOPE/) | Domain/IP infrastructure mapper — ASN, PDNS, certs, CDN/WAF |
+| [MAILSCOPE](https://h3ad-sec.github.io/MAILSCOPE/) | Email header analyzer — SPF/DKIM/DMARC, hop chain, spoofing detection |
 
 ### [H3AD-AI](https://h3ad-sec.github.io/H3AD-AI/) — AI-Assisted Security
 AI-augmented analyst workflows for runbook generation, query building, and ATT&CK mapping.
@@ -31,6 +32,7 @@ AI-augmented analyst workflows for runbook generation, query building, and ATT&C
 | [ATTMAP-AI](https://h3ad-sec.github.io/ATTMAP-AI/) | ATT&CK mapper — technique identification from alert/log context |
 | [CHRONO-AI](https://h3ad-sec.github.io/CHRONO-AI/) | Timeline builder — structured event chronology from raw investigation notes |
 | [MALBRIEF-AI](https://h3ad-sec.github.io/MALBRIEF-AI/) | Malware behavior analyzer — classification, TTPs, detection signatures |
+| [PROMPTVAULT](https://h3ad-sec.github.io/PROMPTVAULT/) | AI prompt library — curated SOC/detection/threat hunting prompts by category |
 
 ### [H3AD-DETECT](https://h3ad-sec.github.io/H3AD-DETECT/) — Detection Engineering
 Detection query libraries mapped to MITRE ATT&CK.
@@ -63,9 +65,14 @@ Artifact analysis and forensic triage tooling.
 | Tool | Description |
 |------|-------------|
 | [REGSCOPE](https://h3ad-sec.github.io/REGSCOPE/) | Registry artifact analyzer — persistence detection, ATT&CK mapping |
+| [MALBRIEF-AI](https://h3ad-sec.github.io/MALBRIEF-AI/) | Malware behavior analyzer — also listed under H3AD-AI |
 
 ### [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) — Incident Response
-Incident response workflow tooling. Tools coming soon.
+Structured IR playbooks and workflow tooling.
+
+| Tool | Description |
+|------|-------------|
+| [PHISHBOOK](https://h3ad-sec.github.io/PHISHBOOK/) | Phishing IR playbook — 9 phases, decision trees, embedded KQL query templates |
 
 ### [H3AD-LEARN](https://h3ad-sec.github.io/H3AD-LEARN/) — Security Training
 Modular browser-native security training for SOC analysts and detection engineers.
