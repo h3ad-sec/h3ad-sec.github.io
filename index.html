@@ -6,7 +6,7 @@
   <title>H3AD-SEC - Operational Cyber Defense Platform</title>
   <meta name="description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ── DESIGN TOKENS ── */
     :root {
@@ -15,35 +15,39 @@
       --panel-2:        #111827;
       --border:         #1c2333;
       --text:           #e6edf3;
-      --muted:          #8b96a8;
+      --muted:          #8b949e;
       --subtle:         #2d3748;
       --primary:        #00d4ff;
       --primary-dim:    rgba(0, 212, 255, 0.08);
       --primary-glow:   rgba(0, 212, 255, 0.18);
-      --accent:         #58a6ff;
-      --accent-dim:     rgba(88, 166, 255, 0.08);
+      --accent:         #3b82f6;
+      --accent-dim:     rgba(59, 130, 246, 0.08);
       --status-live:    #00d4ff;
       --status-partial: #f59e0b;
       --status-soon:    #2d3748;
       --nav-h:          48px;
+      --mono: 'Share Tech Mono', monospace;
+      --sans: 'Exo 2', sans-serif;
+      --ui:   'IBM Plex Sans', sans-serif;
     }
 
+    /* softened, low-glare light theme, panels dropped off pure white for long work sessions */
     body.light {
-      --bg:             #f8fafc;
-      --panel:          #ffffff;
-      --panel-2:        #f1f5f9;
-      --border:         #e2e8f0;
-      --text:           #0d1117;
-      --muted:          #5c6b8a;
-      --subtle:         #cbd5e1;
-      --primary:        #0284c7;
-      --primary-dim:    rgba(2, 132, 199, 0.07);
-      --primary-glow:   rgba(2, 132, 199, 0.14);
-      --accent:         #2563eb;
-      --accent-dim:     rgba(37, 99, 235, 0.07);
-      --status-live:    #0284c7;
-      --status-partial: #d97706;
-      --status-soon:    #cbd5e1;
+      --bg:             #D3D7DC;
+      --panel:          #DADDE1;
+      --panel-2:        #C9CDD2;
+      --border:         #BBC0C6;
+      --text:           #000000;
+      --muted:          #2E343B;
+      --subtle:         #BBC0C6;
+      --primary:        #0A6EA8;
+      --primary-dim:    rgba(10, 110, 168, 0.07);
+      --primary-glow:   rgba(10, 110, 168, 0.14);
+      --accent:         #C2540E;
+      --accent-dim:     rgba(194, 84, 14, 0.07);
+      --status-live:    #0A6EA8;
+      --status-partial: #B45309;
+      --status-soon:    #BBC0C6;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,7 +55,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Exo 2', sans-serif;
+      font-family: var(--ui);
       min-height: 100dvh;
       transition: background 0.3s, color 0.3s;
       overflow-x: hidden;
@@ -346,7 +350,7 @@
     .hero-h1 .accent { color: var(--primary); }
 
     .hero-tagline {
-      font-family: 'Exo 2', sans-serif;
+      font-family: var(--ui);
       font-weight: 300;
       font-size: 1rem;
       color: var(--muted);
@@ -516,7 +520,7 @@
     }
 
     .module-card-desc {
-      font-family: 'Exo 2', sans-serif;
+      font-family: var(--ui);
       font-weight: 400;
       font-size: 0.75rem;
       color: var(--muted);
