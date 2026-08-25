@@ -68,11 +68,7 @@ Artifact analysis and forensic triage tooling.
 | [MALBRIEF-AI](https://h3ad-sec.github.io/MALBRIEF-AI/) | Malware behavior analyzer — also listed under H3AD-AI |
 
 ### [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) — Incident Response
-Structured IR playbooks and workflow tooling.
-
-| Tool | Description |
-|------|-------------|
-| [PHISHBOOK](https://h3ad-sec.github.io/PHISHBOOK/) | Phishing IR playbook — 9 phases, decision trees, embedded KQL query templates |
+Structured IR playbooks and workflow tooling. No tools live yet.
 
 ### [H3AD-LEARN](https://h3ad-sec.github.io/H3AD-LEARN/) — Security Training
 Modular browser-native security training for SOC analysts and detection engineers.
