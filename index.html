@@ -5,8 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H3AD-SEC - Operational Cyber Defense Platform</title>
   <meta name="description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
+  <link rel="canonical" href="https://h3ad-sec.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="H3AD-SEC" />
+  <meta property="og:url" content="https://h3ad-sec.github.io/" />
+  <meta property="og:title" content="H3AD-SEC - Operational Cyber Defense Platform" />
+  <meta property="og:description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/h3ad-sec/h3ad-sec.github.io/main/logo-dark.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="H3AD-SEC - Operational Cyber Defense Platform" />
+  <meta name="twitter:description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/h3ad-sec/h3ad-sec.github.io/main/logo-dark.png" />
+
+  <meta name="theme-color" content="#080c14" />
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "H3AD-SEC",
+    "description": "H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.",
+    "url": "https://h3ad-sec.github.io/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "H3AD-SEC",
+      "url": "https://h3ad-sec.github.io"
+    }
+  }
+  </script>
   <style>
     /* ── DESIGN TOKENS ── */
     :root {
@@ -627,6 +657,13 @@
       letter-spacing: 0.1em;
     }
 
+    .footer-credit-row { display:flex; justify-content:center; margin-top:16px; }
+    .footer-credit-pill { display:inline-flex; flex-wrap:nowrap; align-items:center; gap:6px; padding:4px 12px; border:1px solid var(--border); border-radius:999px; text-decoration:none; font-family:'Exo 2',sans-serif; font-weight:500; font-size:0.6rem; white-space:nowrap; transition:border-color .15s; }
+    .footer-credit-pill:hover { border-color:var(--accent); }
+    .footer-credit-pill .credit-tool { font-weight:700; letter-spacing:2px; }
+    .footer-credit-pill .credit-by { color:var(--muted); }
+    .footer-credit-pill .credit-name { color:var(--accent); font-weight:700; letter-spacing:.5px; }
+
     /* ── RESPONSIVE ── */
     body.nav-compact .nav-links { display: none; }
     body.nav-compact .hamburger { display: flex; }
@@ -1036,6 +1073,13 @@
           <a href="https://www.linkedin.com/company/h3ad-sec/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <div class="footer-copy">H3AD-SEC © 2026 &nbsp;·&nbsp; Intelligence. Detection. Response.</div>
+        <div class="footer-credit-row">
+          <a class="footer-credit-pill" href="https://www.linkedin.com/in/hrushikesh-badgujar/" target="_blank" rel="noopener" title="Connect on LinkedIn">
+            <span class="credit-tool">H3AD-SEC</span>
+            <span class="credit-by">created by</span>
+            <span class="credit-name">H3AD</span>
+          </a>
+        </div>
       </div>
 
     </div>
