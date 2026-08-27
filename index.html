@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('js-anim');
+    }
+  </script>
   <title>H3AD-SEC - Operational Cyber Defense Platform</title>
   <meta name="description" content="H3AD-SEC — Operationalizing threat intelligence across SecOps, Threat Hunting, Detection Engineering, DFIR, and SOC Automation.">
   <link rel="canonical" href="https://h3ad-sec.github.io/" />
@@ -319,9 +324,8 @@
 
     .drawer-sub {
       padding-left: 2.5rem !important;
-      font-size: 0.7rem !important;
+      font-size: 0.74rem !important;
       font-weight: 400 !important;
-      opacity: 0.7;
     }
 
     /* ── MAIN ── */
@@ -423,6 +427,7 @@
       font-size: 1.4rem;
       color: var(--text);
       line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-num .hi { color: var(--primary); }
@@ -489,7 +494,7 @@
       color: inherit;
       position: relative;
       overflow: hidden;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
       min-height: 180px;
     }
 
@@ -504,12 +509,16 @@
       transition: opacity 0.2s;
     }
 
-    .module-card:hover { background: var(--panel-2); }
+    .module-card:hover {
+      background: var(--panel-2);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.45);
+    }
     .module-card:hover::before { opacity: 1; }
 
     /* SOON cards — dimmed, non-interactive */
     .module-card.soon { opacity: 0.4; pointer-events: none; cursor: default; }
-    .module-card.soon:hover { background: var(--panel); }
+    .module-card.soon:hover { background: var(--panel); transform: none; box-shadow: none; }
     .module-card.soon:hover::before { opacity: 0; }
 
     .module-card-header {
@@ -533,7 +542,7 @@
 
     .module-card-arrow {
       font-size: 0.78rem;
-      color: var(--subtle);
+      color: var(--muted);
       transition: color 0.2s, transform 0.2s;
       flex-shrink: 0;
       margin-top: 1px;
@@ -545,14 +554,14 @@
     }
 
     .module-card.soon:hover .module-card-arrow {
-      color: var(--subtle);
+      color: var(--muted);
       transform: none;
     }
 
     .module-card-desc {
       font-family: var(--ui);
       font-weight: 400;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--muted);
       line-height: 1.65;
       margin-bottom: 0.9rem;
@@ -561,9 +570,9 @@
 
     .module-card-tools {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
-      color: var(--subtle);
-      letter-spacing: 0.06em;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
       margin-bottom: 0.85rem;
       line-height: 1.9;
       min-height: 1em;
@@ -625,44 +634,126 @@
 
     /* ── FOOTER ── */
     .footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding-top: 2rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
       border-top: 1px solid var(--border);
     }
 
-    .footer-links {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-tagline {
+      font-family: var(--ui);
+      font-weight: 400;
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 300px;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.55rem;
+    }
+
+    .footer-social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--primary-dim);
+      transform: translateY(-2px);
+    }
+
+    .footer-social svg { width: 15px; height: 15px; display: block; }
+
+    .footer-col-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.85;
       margin-bottom: 1rem;
     }
 
-    .footer-links a {
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-col a {
       font-family: 'Exo 2', sans-serif;
       font-weight: 400;
-      font-size: 0.72rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
       color: var(--muted);
       text-decoration: none;
+      padding: 0.36rem 0;
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--primary); }
+    .footer-col a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
 
     .footer-copy {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--subtle);
-      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
     }
 
-    .footer-credit-row { display:flex; justify-content:center; margin-top:16px; }
-    .footer-credit-pill { display:inline-flex; flex-wrap:nowrap; align-items:center; gap:6px; padding:4px 12px; border:1px solid var(--border); border-radius:999px; text-decoration:none; font-family:'Exo 2',sans-serif; font-weight:500; font-size:0.6rem; white-space:nowrap; transition:border-color .15s; }
-    .footer-credit-pill:hover { border-color:var(--accent); }
-    .footer-credit-pill .credit-tool { font-weight:700; letter-spacing:2px; }
+    .footer-credit-pill { display:inline-flex; flex-wrap:nowrap; align-items:center; gap:6px; padding:5px 13px; border:1px solid var(--border); border-radius:999px; text-decoration:none; font-family:'Exo 2',sans-serif; font-weight:500; font-size:0.68rem; white-space:nowrap; color: var(--muted); transition:border-color .15s, background .15s; }
+    .footer-credit-pill:hover { border-color:var(--accent); background: var(--accent-dim); }
+    .footer-credit-pill .credit-tool { font-weight:700; letter-spacing:2px; color: var(--text); }
     .footer-credit-pill .credit-by { color:var(--muted); }
     .footer-credit-pill .credit-name { color:var(--accent); font-weight:700; letter-spacing:.5px; }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .footer-brand-col { grid-column: 1 / -1; }
+      .footer-tagline { max-width: 420px; }
+    }
+
+    @media (max-width: 560px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.25rem; }
+      .footer-brand-col { grid-column: 1 / -1; }
+      .footer-tagline { max-width: 100%; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
 
     /* ── RESPONSIVE ── */
     body.nav-compact .nav-links { display: none; }
@@ -710,10 +801,8 @@
         padding: 1.1rem 1rem;
         min-height: unset;
       }
-      .footer-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
       }
       .footer-copy {
         word-break: break-word;
@@ -746,6 +835,31 @@
       outline: 2px solid var(--primary);
       outline-offset: 2px;
       border-radius: 4px;
+    }
+
+    /* ── AMBIENT DRIFT ── */
+    body::before {
+      animation: ambient-drift 44s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambient-drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-2%, 1.5%) scale(1.04); }
+    }
+
+    /* ── ENTRANCE / SCROLL REVEAL ── */
+    .reveal { opacity: 1; }
+
+    .js-anim .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--d, 0ms);
+    }
+
+    .js-anim .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── REDUCED MOTION ── */
@@ -878,24 +992,24 @@
       <!-- HERO -->
       <div class="hero">
 
-        <div class="hero-eyebrow">Operational Cyber Defense Platform</div>
+        <div class="hero-eyebrow reveal reveal-onload" style="--d:0ms">Operational Cyber Defense Platform</div>
 
-        <h1 class="hero-h1">
+        <h1 class="hero-h1 reveal reveal-onload" style="--d:90ms">
           Intelligence. Detection.<br><span class="accent">Response.</span>
         </h1>
 
-        <p class="hero-tagline">
+        <p class="hero-tagline reveal reveal-onload" style="--d:180ms">
           Operationalizing Threat Intelligence across SecOps,<br>
           Threat Hunting, Detection Engineering &amp; DFIR.
         </p>
 
-        <div class="stat-strip">
+        <div class="stat-strip reveal reveal-onload" style="--d:280ms">
           <div class="stat-item">
-            <div class="stat-num">20<span class="hi">+</span></div>
+            <div class="stat-num"><span class="count" data-count="20">0</span><span class="hi">+</span></div>
             <div class="stat-label">Live Tools</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">11<span class="hi">+</span></div>
+            <div class="stat-num"><span class="count" data-count="11">0</span><span class="hi">+</span></div>
             <div class="stat-label">Data Sources</div>
           </div>
           <div class="stat-item">
@@ -903,7 +1017,7 @@
             <div class="stat-label">Query Formats</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">7</div>
+            <div class="stat-num"><span class="count" data-count="7">0</span></div>
             <div class="stat-label">Domains</div>
           </div>
         </div>
@@ -911,14 +1025,14 @@
       </div>
 
       <!-- MODULE GRID -->
-      <div class="section-row">
+      <div class="section-row reveal">
         <span class="section-label">Platform Modules</span>
         <div class="section-line"></div>
       </div>
 
       <div class="module-grid">
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:0ms" href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-X</span>
             <span class="module-card-arrow">↗</span>
@@ -934,7 +1048,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:50ms" href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-AI</span>
             <span class="module-card-arrow">↗</span>
@@ -950,7 +1064,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:100ms" href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-DETECT</span>
             <span class="module-card-arrow">↗</span>
@@ -966,7 +1080,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:150ms" href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-HUNT</span>
             <span class="module-card-arrow">↗</span>
@@ -982,7 +1096,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:200ms" href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-OPS</span>
             <span class="module-card-arrow">↗</span>
@@ -998,7 +1112,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:250ms" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-DF</span>
             <span class="module-card-arrow">↗</span>
@@ -1014,7 +1128,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:300ms" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-IR</span>
             <span class="module-card-arrow">↗</span>
@@ -1030,7 +1144,7 @@
           </div>
         </a>
 
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:350ms" href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-LEARN</span>
             <span class="module-card-arrow">↗</span>
@@ -1048,12 +1162,12 @@
 
       </div>
 
-      <div class="section-row" style="margin-top:2.5rem;">
+      <div class="section-row reveal" style="margin-top:2.5rem;">
         <span class="section-label">Creator Profile</span>
         <div class="section-line"></div>
       </div>
       <div style="display:flex;">
-        <a class="module-card" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener" style="max-width:320px;">
+        <a class="module-card reveal" style="max-width:320px; --d:50ms" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD</span>
             <span class="module-card-arrow">↗</span>
@@ -1066,14 +1180,52 @@
 
       <!-- FOOTER -->
       <div class="footer">
-        <div class="footer-links">
-          <a href="mailto:h3adsec@gmail.com">Contact</a>
-          <a href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">About</a>
-          <a href="https://github.com/h3ad-sec" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/company/h3ad-sec/" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="footer-grid">
+
+          <div class="footer-col footer-brand-col">
+            <div class="footer-brand-name">H3AD-SEC</div>
+            <p class="footer-tagline">Operational cyber defense platform. Threat intelligence, detection engineering and hunting workflows built by a working SOC analyst, not a product team.</p>
+            <div class="footer-social">
+              <a href="https://github.com/h3ad-sec" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A10.53 10.53 0 0 0 23.5 12.03C23.5 5.66 18.35.5 12 .5Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/h3ad-sec/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+              </a>
+              <a href="mailto:h3adsec@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-label">Platform</span>
+            <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">H3AD-X</a>
+            <a href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">H3AD-AI</a>
+            <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">H3AD-DETECT</a>
+            <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">H3AD-HUNT</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-label">Operations</span>
+            <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">H3AD-OPS</a>
+            <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">H3AD-DF</a>
+            <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">H3AD-IR</a>
+            <a href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">H3AD-LEARN</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-label">More</span>
+            <a href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">whoami</a>
+            <a href="mailto:h3adsec@gmail.com">Contact</a>
+            <a href="https://github.com/h3ad-sec" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/company/h3ad-sec/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
         </div>
-        <div class="footer-copy">H3AD-SEC © 2026 &nbsp;·&nbsp; Intelligence. Detection. Response.</div>
-        <div class="footer-credit-row">
+
+        <div class="footer-bottom">
+          <div class="footer-copy">H3AD-SEC © 2026 &nbsp;·&nbsp; Intelligence. Detection. Response.</div>
           <a class="footer-credit-pill" href="https://www.linkedin.com/in/hrushikesh-badgujar/" target="_blank" rel="noopener" title="Connect on LinkedIn">
             <span class="credit-tool">H3AD-SEC</span>
             <span class="credit-by">created by</span>
@@ -1127,6 +1279,51 @@
       setLogo('dark');
     }
     (function(){var pill=document.getElementById('xv-nav-pill'),links=document.querySelector('.nav-links'),toggle=document.querySelector('.theme-toggle'),G=20;function check(){if(!links)return;document.body.classList.remove('nav-compact');links.style.visibility='hidden';var lr=links.getBoundingClientRect(),pr=pill?pill.getBoundingClientRect().right:60,tl=toggle?toggle.getBoundingClientRect().left:window.innerWidth-60;links.style.visibility='';document.body.classList.toggle('nav-compact',(pr+G>lr.left)||(lr.right+G>tl));}check();window.addEventListener('resize',check);})();
+
+    // Entrance / scroll reveal
+    (function(){
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+
+      document.querySelectorAll('.reveal-onload').forEach(function(el){
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){ el.classList.add('is-visible'); });
+        });
+      });
+
+      var targets = document.querySelectorAll('.reveal:not(.reveal-onload)');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function(el){ io.observe(el); });
+    })();
+
+    // Stat count-up
+    (function(){
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.stat-num .count').forEach(function(el){
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        if (reduced) { el.textContent = target; return; }
+        var start = null, dur = 900;
+        function step(ts){
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    })();
   </script>
 </body>
 </html>
