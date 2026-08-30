@@ -295,6 +295,7 @@
       height: calc(100vh - var(--nav-h));
       background: var(--panel);
       border-right: 1px solid var(--border);
+      box-shadow: 6px 0 28px rgba(0, 0, 0, 0.35);
       z-index: 49;
       display: flex;
       flex-direction: column;
@@ -395,60 +396,6 @@
       max-width: 520px;
       margin: 0 auto 3rem;
       line-height: 1.75;
-    }
-
-    /* STAT STRIP */
-    .stat-strip {
-      display: inline-flex;
-      align-items: stretch;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--panel);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.9rem 2rem;
-      border-right: 1px solid var(--border);
-      gap: 0.25rem;
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    @media (max-width: 480px) {
-      .stat-strip { flex-wrap: wrap; width: 100%; border-radius: 8px; }
-      .stat-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid var(--border); justify-content: flex-start; padding: 0.75rem 1.25rem; }
-      .stat-item:last-child { border-bottom: none; }
-    }
-
-    .stat-num {
-      font-family: 'Exo 2', sans-serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--text);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stat-num .hi { color: var(--primary); }
-
-    .stat-num.mono {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      color: var(--primary);
-    }
-
-    .stat-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
-      color: var(--muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
 
     /* ── MODULE SECTION ── */
@@ -698,17 +645,6 @@
 
     @media (max-width: 560px) {
       .module-grid { grid-template-columns: 1fr; }
-      .stat-strip {
-        flex-direction: column;
-        width: 100%;
-      }
-      .stat-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        width: 100%;
-        padding: 0.75rem 1.5rem;
-      }
-      .stat-item:last-child { border-bottom: none; }
     }
 
     @media (max-width: 640px) {
@@ -868,6 +804,9 @@
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
           <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/" target="_blank" rel="noopener">THREAT HUNTING</a>
           <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/" target="_blank" rel="noopener">LOLBAS</a>
+          <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-intel/" target="_blank" rel="noopener">THREAT INTEL</a>
+          <a href="https://h3ad-sec.github.io/H3AD-LEARN/cloud-security/" target="_blank" rel="noopener">CLOUD SECURITY</a>
+          <a href="https://h3ad-sec.github.io/H3AD-LEARN/interview-prep/" target="_blank" rel="noopener">INTERVIEW PREP</a>
         </div></div>
       </div>
       <div class="nav-divider"></div>
@@ -913,6 +852,9 @@
     <a href="https://h3ad-sec.github.io/H3AD-LEARN/" onclick="closeDrawer()">H3AD-LEARN</a>
     <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-hunting/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ THREAT HUNTING ↗</a>
     <a href="https://h3ad-sec.github.io/H3AD-LEARN/lolbas/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ LOLBAS ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/threat-intel/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ THREAT INTEL ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/cloud-security/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ CLOUD SECURITY ↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-LEARN/interview-prep/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ INTERVIEW PREP ↗</a>
     <div class="drawer-divider"></div>
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
@@ -934,25 +876,6 @@
           Operationalizing Threat Intelligence across SecOps,<br>
           Threat Hunting, Detection Engineering &amp; DFIR.
         </p>
-
-        <div class="stat-strip reveal reveal-onload" style="--d:280ms">
-          <div class="stat-item">
-            <div class="stat-num"><span class="count" data-count="20">0</span><span class="hi">+</span></div>
-            <div class="stat-label">Live Tools</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num"><span class="count" data-count="11">0</span><span class="hi">+</span></div>
-            <div class="stat-label">Data Sources</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num mono">KQL · SIGMA · XQL</div>
-            <div class="stat-label">Query Formats</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num"><span class="count" data-count="7">0</span></div>
-            <div class="stat-label">Domains</div>
-          </div>
-        </div>
 
       </div>
 
@@ -1194,24 +1117,6 @@
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
       targets.forEach(function(el){ io.observe(el); });
-    })();
-
-    // Stat count-up
-    (function(){
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      document.querySelectorAll('.stat-num .count').forEach(function(el){
-        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-        if (reduced) { el.textContent = target; return; }
-        var start = null, dur = 900;
-        function step(ts){
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(eased * target);
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
     })();
   </script>
 </body>
