@@ -70,23 +70,23 @@
       --fs-xs: 11px;
     }
 
-    /* softened, low-glare light theme, panels dropped off pure white for long work sessions */
+    /* clean, high-contrast light theme: white panels on a soft off-white ground */
     body.light {
-      --bg:             #D3D7DC;
-      --panel:          #DADDE1;
-      --panel-2:        #C9CDD2;
-      --border:         #BBC0C6;
-      --text:           #000000;
-      --muted:          #2E343B;
-      --subtle:         #BBC0C6;
-      --primary:        #0A6EA8;
-      --primary-dim:    rgba(10, 110, 168, 0.07);
-      --primary-glow:   rgba(10, 110, 168, 0.14);
-      --accent:         #C2540E;
-      --accent-dim:     rgba(194, 84, 14, 0.07);
-      --status-live:    #0A6EA8;
+      --bg:             #EEF1F4;
+      --panel:          #FFFFFF;
+      --panel-2:        #F4F7F9;
+      --border:         #DCE3E9;
+      --text:           #101823;
+      --muted:          #5B6B7A;
+      --subtle:         #E6EBEF;
+      --primary:        #0284C7;
+      --primary-dim:    rgba(2, 132, 199, 0.08);
+      --primary-glow:   rgba(2, 132, 199, 0.16);
+      --accent:         #D97706;
+      --accent-dim:     rgba(217, 119, 6, 0.08);
+      --status-live:    #0284C7;
       --status-partial: #B45309;
-      --status-soon:    #BBC0C6;
+      --status-soon:    #DCE3E9;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -373,8 +373,10 @@
       height: 1px;
     }
 
-    .hero-eyebrow::before { background: linear-gradient(90deg, transparent, var(--border)); }
-    .hero-eyebrow::after  { background: linear-gradient(90deg, var(--border), transparent); }
+    .hero-eyebrow::before { background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.55)); }
+    .hero-eyebrow::after  { background: linear-gradient(90deg, rgba(0, 212, 255, 0.55), transparent); }
+    body.light .hero-eyebrow::before { background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.5)); }
+    body.light .hero-eyebrow::after  { background: linear-gradient(90deg, rgba(2, 132, 199, 0.5), transparent); }
 
     .hero-h1 {
       font-family: 'Exo 2', sans-serif;
@@ -425,19 +427,44 @@
       background: var(--border);
     }
 
-    /* MODULE GRID */
+    /* ── MANIFESTO ── */
+    .manifesto-strip {
+      position: relative;
+      padding: 2rem 0 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .manifesto-strip::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary) 0%, transparent 100%);
+      opacity: 0.35;
+    }
+    .manifesto-text {
+      font-size: clamp(0.82rem, 2vw, 1rem);
+      color: var(--text);
+      line-height: 1.9;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 480px) {
+      .manifesto-text { font-size: 0.78rem; }
+    }
+
+    /* MODULE GRID (matches H3AD's Platform section: individually-bordered, per-module color) */
     .module-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
+      gap: 16px;
     }
 
     .module-card {
+      --mc-rgb: 0, 212, 255;
       background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
       padding: 1.5rem 1.35rem;
       display: flex;
       flex-direction: column;
@@ -445,7 +472,7 @@
       color: inherit;
       position: relative;
       overflow: hidden;
-      transition: background 0.2s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+      transition: border-color 0.2s, background 0.2s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
       min-height: 180px;
     }
 
@@ -455,22 +482,21 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      opacity: 0;
-      transition: opacity 0.2s;
+      background: linear-gradient(90deg, transparent, rgb(var(--mc-rgb)), transparent);
+      opacity: 0.6;
     }
 
     .module-card:hover {
-      background: var(--panel-2);
+      border-color: rgb(var(--mc-rgb));
+      background: rgba(var(--mc-rgb), 0.02);
       transform: translateY(-4px);
       box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.45);
     }
-    .module-card:hover::before { opacity: 1; }
+    body.light .module-card:hover { box-shadow: 0 14px 26px -16px rgba(0, 0, 0, 0.12); }
 
     /* SOON cards — dimmed, non-interactive */
-    .module-card.soon { opacity: 0.4; pointer-events: none; cursor: default; }
-    .module-card.soon:hover { background: var(--panel); transform: none; box-shadow: none; }
-    .module-card.soon:hover::before { opacity: 0; }
+    .module-card.soon { opacity: 0.55; pointer-events: none; cursor: default; }
+    .module-card.soon:hover { border-color: var(--border); background: var(--panel); transform: none; box-shadow: none; }
 
     .module-card-header {
       display: flex;
@@ -481,14 +507,14 @@
 
     .module-card-name {
       font-family: 'Exo 2', sans-serif;
-      font-weight: 600;
-      font-size: 0.88rem;
+      font-weight: 700;
+      font-size: 1rem;
       color: var(--text);
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
       transition: color 0.2s;
     }
 
-    .module-card:hover .module-card-name { color: var(--primary); }
+    .module-card:hover .module-card-name { color: rgb(var(--mc-rgb)); }
     .module-card.soon:hover .module-card-name { color: var(--text); }
 
     .module-card-arrow {
@@ -500,7 +526,7 @@
     }
 
     .module-card:hover .module-card-arrow {
-      color: var(--primary);
+      color: rgb(var(--mc-rgb));
       transform: translate(2px, -2px);
     }
 
@@ -887,7 +913,7 @@
 
       <div class="module-grid">
 
-        <a class="module-card reveal" style="--d:0ms" href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:0ms; --mc-rgb:0,212,255;" href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-X</span>
             <span class="module-card-arrow">↗</span>
@@ -903,7 +929,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:50ms" href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:50ms; --mc-rgb:139,92,246;" href="https://h3ad-sec.github.io/H3AD-AI/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-AI</span>
             <span class="module-card-arrow">↗</span>
@@ -919,7 +945,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:100ms" href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:100ms; --mc-rgb:245,158,11;" href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-DETECT</span>
             <span class="module-card-arrow">↗</span>
@@ -935,7 +961,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:150ms" href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:150ms; --mc-rgb:20,184,166;" href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-HUNT</span>
             <span class="module-card-arrow">↗</span>
@@ -951,7 +977,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:200ms" href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:200ms; --mc-rgb:99,102,241;" href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-OPS</span>
             <span class="module-card-arrow">↗</span>
@@ -967,7 +993,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:250ms" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:250ms; --mc-rgb:107,114,128;" href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-DF</span>
             <span class="module-card-arrow">↗</span>
@@ -983,7 +1009,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:300ms" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:300ms; --mc-rgb:107,114,128;" href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-IR</span>
             <span class="module-card-arrow">↗</span>
@@ -999,7 +1025,7 @@
           </div>
         </a>
 
-        <a class="module-card reveal" style="--d:350ms" href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">
+        <a class="module-card reveal" style="--d:350ms; --mc-rgb:34,197,94;" href="https://h3ad-sec.github.io/H3AD-LEARN/" target="_blank" rel="noopener">
           <div class="module-card-header">
             <span class="module-card-name">H3AD-LEARN</span>
             <span class="module-card-arrow">↗</span>
@@ -1017,20 +1043,13 @@
 
       </div>
 
+      <!-- ABOUT H3AD-SEC -->
       <div class="section-row reveal" style="margin-top:2.5rem;">
-        <span class="section-label">Creator Profile</span>
+        <span class="section-label">About H3AD-SEC</span>
         <div class="section-line"></div>
       </div>
-      <div style="display:flex;">
-        <a class="module-card reveal" style="max-width:320px; --d:50ms" href="https://h3ad-sec.github.io/H3AD" target="_blank" rel="noopener">
-          <div class="module-card-header">
-            <span class="module-card-name">H3AD</span>
-            <span class="module-card-arrow">↗</span>
-          </div>
-          <div class="module-card-desc">whoami · personal profile, skills, tools built, and platform overview.</div>
-          <div class="module-card-tools">&nbsp;</div>
-          <div class="module-card-footer"></div>
-        </a>
+      <div class="manifesto-strip reveal">
+        <p class="manifesto-text">Intelligence without action is noise.<br>Detection without context is blind.<br>Response without understanding is guesswork.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">H3AD-SEC closes the gap. Raw threat data to operational defense, hypothesis to detection rule.</span></p>
       </div>
 
       <!-- FOOTER -->
